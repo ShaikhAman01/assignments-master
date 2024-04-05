@@ -17,9 +17,49 @@
 */
 
 class Calculator {
-  Calculator(let result=0){
+    constructor() {
+        this.result = 0;
+    }
 
-  }
+    add(num) {
+        this.result += num;
+    }
+
+    subtract(num) {
+        this.result -= num;
+    }
+
+    multiply(num) {
+        this.result *= num;
+    }
+
+    divide(num) {
+        if (num === 0) {
+            throw new Error("Cannot divide by zero");
+        }
+        this.result /= num;
+    }
+
+    clear() {
+        this.result = 0;
+    }
+
+    getResult() {
+        return this.result;
+    }
+
+    calculate(expression) {
+        try {
+            this.result = eval(expression);
+        } catch (error) {
+            throw new Error("Invalid expression");
+        }
+    }
 }
+
+const calculator = new Calculator();
+calculator.calculate("10 + 2 * (6 - (4 + 1) / 2) + 7");
+console.log(calculator.getResult()); // Output: 23
+
 
 module.exports = Calculator;

@@ -18,48 +18,55 @@
 
 class Calculator {
     constructor() {
-        this.result = 0;
+      this.result = 0;
     }
-
+  
     add(num) {
-        this.result += num;
+      this.result += num;
     }
-
+  
     subtract(num) {
-        this.result -= num;
+      this.result -= num;
     }
-
+  
     multiply(num) {
-        this.result *= num;
+      this.result *= num;
     }
-
+  
     divide(num) {
-        if (num === 0) {
-            throw new Error("Cannot divide by zero");
-        }
-        this.result /= num;
+      if (num === 0) {
+        throw new Error();
+      }
+      this.result /= num;
     }
-
+  
     clear() {
-        this.result = 0;
+      this.result = 0;
     }
-
+  
     getResult() {
-        return this.result;
+      return this.result;
     }
-
-    calculate(expression) {
-        try {
-            this.result = eval(expression);
-        } catch (error) {
-            throw new Error("Invalid expression");
-        }
+  
+    calculate(str) {
+  
+      // remove all spaces
+      str = str.replace(/\s/g, '');
+  
+      const regex = /[a-zA-Z]/g;
+  
+      // if invalid characters are present or divide by zero, throw error
+      if (regex.test(str) || str.includes('/0')) {
+        throw new Error();
+      }
+  
+      // calculate expression
+      const result = eval(str);
+      this.result = result;
+  
+      return this.getResult();
+  
     }
-}
-
-const calculator = new Calculator();
-calculator.calculate("10 + 2 * (6 - (4 + 1) / 2) + 7");
-console.log(calculator.getResult()); // Output: 23
-
+  }
 
 module.exports = Calculator;

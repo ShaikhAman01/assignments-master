@@ -1,5 +1,3 @@
-import React from 'react'
-
 export function BusinessCard(props) {
     return (
       <div style={styles.card}>
@@ -82,12 +80,3 @@ export function BusinessCard(props) {
       color: '#555',
     },
   };
-
-  <BusinessCard
-  name="John Doe"
-  description="Full Stack Developer"
-  interests={['Coding', 'Music', 'Travel']}
-  linkedin="https://www.linkedin.com/in/johndoe"
-  twitter="https://twitter.com/johndoe"
-  otherSocialMedia={{ label: 'GitHub', url: 'https://github.com/johndoe' }}
-/>
